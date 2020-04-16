@@ -1,0 +1,101 @@
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  background: #eeeeff;
+  color: #eeeeff;
+  font-family: "Montserrat", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+button,
+input {
+  font-family: "Montserrat", sans-serif;
+}
+
+.calculator {
+  display: grid;
+  max-width: 411px;
+  min-height: 640px;
+  max-height: 812px;
+  height: 100vh;
+  margin: 30px auto;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 2fr;
+  border-radius: 3em;
+  border: 8px solid #13132c;
+  overflow: hidden;
+  box-sizing: content-box;
+}
+
+@media (max-width: 411px) {
+  .calculator {
+    border: none;
+    border-radius: 0px;
+    max-height: 100vh;
+    box-sizing: border-box;
+    margin: 0 auto;
+  }
+}
+
+.display {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  background: #13132c;
+  font-size: 4em;
+  padding-top: 0.75em;
+  padding-right: 0.25em;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  /* border-top-left-radius: 2.5em;
+  border-top-right-radius: 2.5em; */
+}
+
+.button {
+  background: transparent;
+  font-size: 2.5em;
+  font-weight: 300;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  background: #13132c;
+  color: #eeeeff;
+  border: none;
+  /* border-radius: 50%; */
+}
+
+@media (max-width: 360px) {
+  .button {
+    font-size: 2em;
+  }
+}
+
+/* .buttons > .button:nth-of-type(7) {
+  border-top-right-radius: 0.75em;
+} */
+
+.modifier {
+  color: #44a3c0;
+}
+
+.equals {
+  color: orangered;
+}
+
+#cancel {
+  color: orangered;
+}

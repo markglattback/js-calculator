@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="App">
+      <div class="calculator">
+        <div class="display">0</div>
+        <div class="buttons">
+          <button id="cancel" data-value="cancel" class="button modifier">
+            C
+          </button>
+          <button id="back" data-value="back" class="button modifier">
+            &cularr;
+          </button>
+          <button id="forward" data-value="forward" class="button modifier">
+            &curarr;
+          </button>
+          <button id="backspace" data-value="backspace" class="button modifier">
+            Del
+          </button>
+          <button id="square-root" data-value="square-root" class="button">
+            &radic;
+          </button>
+          <button id="parentheses" data-value="parentheses" class="button">
+            ( )
+          </button>
+          <button id="percent" data-value="percent" class="button">
+            &percnt;
+          </button>
+          <button id="divide" data-value="divide" class="button modifier">
+            &divide;
+          </button>
+          <button id="7" data-value="7" class="button">7</button>
+          <button id="8" data-value="8" class="button">8</button>
+          <button id="9" data-value="9" class="button">9</button>
+          <button id="multiply" data-value="multiply" class="button modifier">
+            &times;
+          </button>
+          <button id="4" data-value="4" class="button">4</button>
+          <button id="5" data-value="5" class="button">5</button>
+          <button id="6" data-value="6" class="button">6</button>
+          <button id="minus" data-value="minus" class="button modifier">
+            &minus;
+          </button>
+          <button id="1" data-value="1" class="button">1</button>
+          <button id="2" data-value="2" class="button">2</button>
+          <button id="3" data-value="3" class="button">3</button>
+          <button id="plus" data-value="plus" class="button modifier">
+            &plus;
+          </button>
+          <button id="plus-minus" data-value="plus-minus" class="button">
+            &plusmn;
+          </button>
+          <button id="0" data-value="0" class="button">0</button>
+          <button id="decimal" data-value="decimal" class="button">.</button>
+          <button id="equals" data-value="equals" class="button equals">
+            &equals;
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
