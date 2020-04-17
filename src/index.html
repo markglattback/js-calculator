@@ -11,23 +11,26 @@
   </head>
   <body>
     <div id="App">
+      <div class="info">
+        <h1>Algebraic Calculator</h1>
+      </div>
       <div class="calculator">
-        <div class="display">0</div>
+        <div class="display">
+          <div class="history">
+            <button id="back" data-value="back" class="history--button">
+              &cularr;
+            </button>
+            <button id="forward" data-value="forward" class="history--button">
+              &curarr;
+            </button>
+          </div>
+          <div class="function"></div>
+          <div class="value">0</div>
+        </div>
+        <div class="tools"></div>
         <div class="buttons">
           <button id="cancel" data-value="cancel" class="button modifier">
             C
-          </button>
-          <button id="back" data-value="back" class="button modifier">
-            &cularr;
-          </button>
-          <button id="forward" data-value="forward" class="button modifier">
-            &curarr;
-          </button>
-          <button id="backspace" data-value="backspace" class="button modifier">
-            Del
-          </button>
-          <button id="square-root" data-value="square-root" class="button">
-            &radic;
           </button>
           <button id="parentheses" data-value="parentheses" class="button">
             ( )
