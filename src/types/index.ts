@@ -24,6 +24,7 @@ export enum Status {
   activeNumberDecimal = "ACTIVE_NUMBER_DECIMAL",
   activeNumberDecimalPlaces = "ACTIVE_NUMBER_DECIMAL_PLACES",
   activeOperator = "ACTIVE_OPERATOR",
+  activePercentage = "ACTIVE_PERCENTAGE",
   parenthesesJustOpened = "PARENTHESES_JUST_OPENED",
   parenthesesJustClosed = "PARENTHESES_JUST_CLOSED",
 }

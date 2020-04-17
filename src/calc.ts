@@ -24,13 +24,16 @@ export default class Calculator {
     this.equation = ["0"];
   }
 
-  set displayValue(displayValue: string) {
-    this.setState({
-      ...this.state,
-      displayValue,
-    });
+  set displayValue(displayValue: string[]) {
+    function generateDisplayHTML(displayItems: string[]): string {
+      return displayItems
+        .map(function (elem, index) {
+          return `<span class="display-character">${elem}</span>`;
+        })
+        .join("");
+    }
 
-    this.displayElement.innerHTML = this.state.displayValue;
+    this.displayElement.innerHTML = generateDisplayHTML(displayValue);
   }
 
   private setState(state: State) {
@@ -38,6 +41,18 @@ export default class Calculator {
       ...this.state,
       ...state,
     };
+
+    switch (this.state.status) {
+      case Status.activeNumber:
+      case Status.activeNumberDecimalPlaces:
+      case Status.finished:
+      case Status.parenthesesJustClosed:
+        this.percentButton.disabled = false;
+        break;
+      default:
+        this.percentButton.disabled = true;
+        break;
+    }
   }
 
   public handleInput(value: string) {
@@ -101,6 +116,7 @@ export default class Calculator {
         });
         break;
       case "PARENTHESES_JUST_CLOSED":
+      case Status.activePercentage:
         this.equation.push("multiply", number);
         this.setState({
           status: Status.activeNumber,
@@ -138,6 +154,18 @@ export default class Calculator {
 
     switch (operator) {
       case "percent":
+        switch (status) {
+          case Status.activeNumber:
+          case Status.activeNumberDecimalPlaces:
+          case Status.finished:
+          case Status.parenthesesJustClosed:
+            this.equation.push("percent");
+            this.setState({
+              status: Status.activePercentage,
+            });
+          default:
+            break;
+        }
         break;
       case "plus-minus":
         break;
@@ -165,6 +193,7 @@ export default class Calculator {
           case "FINISHED":
           case "ACTIVE_NUMBER":
           case "ACTIVE_NUMBER_DECIMAL_PLACES":
+          case Status.activePercentage:
           case "PARENTHESES_JUST_CLOSED":
             this.equation.push("multiply", "square-root", "(");
             this.setState({
@@ -202,6 +231,7 @@ export default class Calculator {
             break;
           case "ACTIVE_NUMBER":
           case "ACTIVE_NUMBER_DECIMAL_PLACES":
+          case Status.activePercentage:
           case "PARENTHESES_JUST_CLOSED":
           case "FINISHED":
             this.equation.push(operator);
@@ -238,6 +268,7 @@ export default class Calculator {
         break;
       case "ACTIVE_NUMBER":
       case "ACTIVE_NUMBER_DECIMAL_PLACES":
+      case Status.activePercentage:
       case "PARENTHESES_JUST_CLOSED":
         if (this.state.parenthesesOpen) {
           this.equation.push(")");
@@ -345,32 +376,24 @@ export default class Calculator {
   }
 
   private updateDisplay(): void {
-    let displayString = "";
-
-    for (let i = 0; i < this.equation.length; i++) {
-      switch (this.equation[i]) {
+    this.displayValue = this.equation.map(function (element) {
+      switch (element) {
         case "multiply":
-          displayString += "&times;";
-          break;
+          return "&times;";
         case "divide":
-          displayString += "&divide;";
-          break;
+          return "&divide;";
         case "plus":
-          displayString += "&plus;";
-          break;
+          return "&plus;";
         case "minus":
-          displayString += "&minus;";
-          break;
+          return "&minus;";
         case "square-root":
-          displayString += "&radic;";
-          break;
+          return "&radic;";
+        case "percent":
+          return "&percnt;";
         default:
-          displayString += this.equation[i];
-          break;
+          return element;
       }
-    }
-
-    this.displayValue = displayString;
+    });
   }
 }
 

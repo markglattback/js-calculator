@@ -6,7 +6,9 @@
     "target": "es5",
     "allowJs": true,
     "skipLibCheck": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
   "exclude": ["node_modules"]
 }

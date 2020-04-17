@@ -51,18 +51,30 @@ input {
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
-  background: #13132c;
+  background: #171722;
   font-size: 4em;
   padding-top: 0.75em;
   padding-right: 0.25em;
+}
+
+.display-character {
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    transform: translateX(10px);
+  }
+
+  to {
+    transform: translateX(0px);
+  }
 }
 
 .buttons {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-  /* border-top-left-radius: 2.5em;
-  border-top-right-radius: 2.5em; */
 }
 
 .button {
@@ -72,7 +84,7 @@ input {
   display: grid;
   place-items: center;
   cursor: pointer;
-  background: #13132c;
+  background: #171722;
   color: #eeeeff;
   border: none;
   /* border-radius: 50%; */
@@ -89,7 +101,7 @@ input {
 } */
 
 .modifier {
-  color: #44a3c0;
+  color: #59dfc8;
 }
 
 .equals {

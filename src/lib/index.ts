@@ -128,6 +128,16 @@ function solveExponents(array: string[]): string[] {
   return array;
 }
 
+function solvePercentages(array: string[]): string[] {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === "percent") {
+      array.splice(i - 1, 2, (Number(array[i - 1]) / 100).toString());
+    }
+  }
+
+  return array;
+}
+
 function solveMultiplication(array: string[]): string[] {
   for (let i = 0; i < array.length; i++) {
     if (array[i] === "multiply") {
@@ -171,6 +181,7 @@ function solveSubtraction(array: string[]): string[] {
 export function solveEquation(array: string[]): string[] {
   array = solveParentheses(array);
   array = solveExponents(array);
+  array = solvePercentages(array);
   array = solveMultiplication(array);
   array = solveDivision(array);
   array = solveAddition(array);
