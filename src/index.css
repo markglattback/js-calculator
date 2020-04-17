@@ -1,6 +1,7 @@
 :root {
   --darkBlue: #171722;
   --white: #fafaff;
+  --whiteDisabled: #fafaff66;
   --teal: #59dfc8;
 }
 
@@ -47,7 +48,7 @@ input {
 .calculator {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 3fr 1fr 4fr;
+  grid-template-rows: 4fr 1fr 5fr;
   width: 360px;
   height: 740px;
   margin: 0 auto;
@@ -131,9 +132,8 @@ input {
   display: grid;
   place-items: center;
   cursor: pointer;
-  background: #171722;
-  color: #eeeeff;
   border: none;
+  color: var(--white);
   /* border-radius: 50%; */
 }
 
@@ -151,10 +151,9 @@ input {
 
 .tools {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-items: start;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
   align-items: center;
-  padding: 0 20px;
 }
 
 .fas {
@@ -167,8 +166,10 @@ input {
 }
 
 .fa-backspace {
-  font-size: 2.5em;
-  justify-self: end;
+  grid-column-start: 4;
+  font-size: 2em;
+  justify-self: center;
+  transform: translateX(-3px);
 }
 
 @media (max-width: 360px) {
@@ -191,4 +192,8 @@ input {
 
 #cancel {
   color: orangered;
+}
+
+#percent:disabled {
+  color: var(--whiteDisabled);
 }

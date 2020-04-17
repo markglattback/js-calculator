@@ -171,7 +171,9 @@ function solveAddition(array: string[]): string[] {
 function solveSubtraction(array: string[]): string[] {
   for (let i = 0; i < array.length; i++) {
     if (array[i] === "minus") {
-      array.splice(i - 1, 3, minus(array[i - 1], array[i + 1]));
+      if (i > 0) {
+        array.splice(i - 1, 3, minus(array[i - 1], array[i + 1]));
+      }
     }
   }
 

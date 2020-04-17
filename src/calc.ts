@@ -1,4 +1,4 @@
-import { InputTypes, Modifiers, State, Equation, Status } from "./types/index";
+import { State, Equation, Status } from "./types/index";
 import { getInputType, countParentheses, solveEquation } from "./lib/index";
 
 // Calculator Class
@@ -168,6 +168,57 @@ export default class Calculator {
         }
         break;
       case "plus-minus":
+        switch (status) {
+          case Status.activeNumber:
+          case Status.activeNumberDecimal:
+          case Status.activeNumberDecimalPlaces:
+          case Status.finished:
+            // flip it
+            let num = this.equation.pop();
+            this.equation.push("(", `-${num}`);
+
+            this.setState({
+              parenthesesOpen: true,
+              openParenthesesCount: this.state.openParenthesesCount + 1,
+            });
+
+            if (status === Status.finished) {
+              // set the correct state
+              if (
+                Number.isInteger(
+                  Number(this.equation[this.equation.length - 1])
+                )
+              ) {
+                this.setState({
+                  status: Status.activeNumber,
+                });
+              } else {
+                this.setState({
+                  status: Status.activeNumberDecimalPlaces,
+                });
+              }
+            }
+            break;
+          case Status.parenthesesJustClosed:
+          case Status.activePercentage:
+            // multiply and (-
+            this.equation.push("multiply", "(", "-");
+            this.setState({
+              status: Status.activeOperator,
+              parenthesesOpen: true,
+              openParenthesesCount: this.state.openParenthesesCount + 1,
+            });
+            break;
+          default:
+            // add (-
+            this.equation.push("(", "-");
+            this.setState({
+              status: Status.activeOperator,
+              parenthesesOpen: true,
+              openParenthesesCount: this.state.openParenthesesCount + 1,
+            });
+            break;
+        }
         break;
       case "square-root":
         // if after another operator, put into brackets and solve e.g x (\/)
