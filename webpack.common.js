@@ -7,7 +7,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'JavaScript Calculator',
+      title: 'TypeScript Calculator',
       template: 'src/index.html'
     })
   ],

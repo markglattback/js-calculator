@@ -8,6 +8,10 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap"
       rel="stylesheet"
     />
+    <script
+      src="https://kit.fontawesome.com/64da2cf345.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div id="App">
@@ -17,17 +21,28 @@
       <div class="calculator">
         <div class="display">
           <div class="history">
-            <button id="back" data-value="back" class="history--button">
+            <button id="back" data-value="back" class="button history--button">
               &cularr;
             </button>
-            <button id="forward" data-value="forward" class="history--button">
+            <button
+              id="forward"
+              data-value="forward"
+              class="button history--button"
+            >
               &curarr;
             </button>
           </div>
           <div class="function"></div>
           <div class="value">0</div>
         </div>
-        <div class="tools"></div>
+        <div class="tools">
+          <div>
+            <i class="fas fa-ellipsis-v"></i>
+            <!-- <button id="square-root" data-value="square-root" class="button">&radic;
+            </button>-->
+          </div>
+          <i class="fas fa-backspace"></i>
+        </div>
         <div class="buttons">
           <button id="cancel" data-value="cancel" class="button modifier">
             C
